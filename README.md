@@ -1,6 +1,6 @@
 # Rotina para Copiar Imagens
 
-Este é uma simples rotina para percorrer uma pasta com imagens TIFF RGB e copiar as imagens que possuem pelo menos 50% de pixels pretos para outra pasta "output".
+Este é uma simples rotina para percorrer uma pasta com imagens TIFF RGB e remover as imagens que possuem pelo menos 50% de pixels pretos.
 
 ## Como usar
 
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 4. Executando o script
 
 ```python
-python main.py --label_dir='/home/fabricio/Mauren/EXTRACTION/SLICES/'
+python main.py --label_dir='/home/fabricio/images/pinus/slices/'
 ```
 
 ## Parâmetros
@@ -41,8 +41,9 @@ python main.py --label_dir='/home/fabricio/Mauren/EXTRACTION/SLICES/'
 
 ## Resultado
 
-As imagens que possuem menos que 50% de pixels pretos serão copiadas para a pasta "output" e as demais serão ignoradas.
+As imagens que possuem menos que 50% de pixels pretos serão excluidas e as demais serão ignoradas.
 
 ## Observações
 
-- O script foi testado apenas com imagens TIFF RGB.
+- 💡 O script foi testado apenas com imagens TIFF RGB.
+- ⚠️  As imagens serão excluidas permanentemente.

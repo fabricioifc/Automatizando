@@ -10,25 +10,18 @@ import matplotlib.pyplot as plt
 
 """
 Função criada para percorrer uma pasta com imagens TIFF RGB e 
-copiar as imagens que possuem menos que 50% de pixels pretos para outra pasta "output".
+remover as imagens que possuem mais que 50% de pixels pretos".
 
 How to Execute
-# python main.py --label_dir='/home/fabricio/Mauren/EXTRACTION/SLICES/'
+# python main.py --label_dir='/home/fabricio/Mauren/images/mata/slices/256/'
 """
-class CopyImagePixelColor():
+class RemoveImagePixelColor():
 
     PERCENT = 0.5
 
     def __init__(self, label_dir) -> None:
         assert os.path.exists(label_dir), "{} don't exists".format(label_dir)
-
-        label_output_dir = os.path.join(label_dir, 'output')
-
-        Path(label_output_dir).mkdir(parents=True, exist_ok=True)
-        assert not os.listdir(label_output_dir), "{} isn't empty".format(label_dir)
-        
         self.label_dir = label_dir
-        self.label_output_dir = label_output_dir
 
     def run(self, color: dict) -> None:
         progress = tqdm(total=self.__count_total(self.label_dir))
@@ -38,18 +31,17 @@ class CopyImagePixelColor():
                 if self.__check_is_tif(os.path.join(root, name)) is True:
                     file_path = os.path.join(root, name)
                     input_file = os.path.splitext(file_path)[0] + ".tif"
-                    output_path = os.path.join(self.label_output_dir, name)
 
                     # Abrir a imagen original em formato RGB                    
                     image = Image.open(input_file)
                     image = image.convert('RGB')
                     
                     # Percorrer cada pixel da imagem
-                    can_copy = not self.__check_image_predominant_color(image, color)
+                    can_remove = self.__check_image_predominant_color(image, color)
 
-                    # Caso a imagem não possua mais que 50% de pixels pretos, copiar para a pasta output
-                    if can_copy:
-                        image.save(output_path)
+                    # Caso a imagem não possua mais que 50% de pixels pretos, remover a imagem
+                    if can_remove:
+                        os.remove(input_file)
                     
                     progress.update(1)
         progress.close()
@@ -98,4 +90,4 @@ if __name__ == '__main__':
     parser.add_argument('--color', type=str, help='Pixel Color', default=(0, 0, 0))
     args = parser.parse_args()
     
-    CopyImagePixelColor(args.label_dir).run(args.color)
+    RemoveImagePixelColor(args.label_dir).run(args.color)

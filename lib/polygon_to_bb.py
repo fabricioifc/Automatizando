@@ -1,10 +1,19 @@
+import os
+import argparse
 import xml.etree.ElementTree as ET
 
 class ConvertToBB:
     def __init__(self, xml_file):
         self.xml_file = xml_file
-        self.tree = ET.parse(xml_file)
-        self.root = self.tree.getroot()
+
+        assert os.path.isfile(xml_file), 'O arquivo não foi encontrado'
+        assert xml_file.endswith('.xml'), 'O arquivo deve ser um XML'
+        
+        try:
+            self.tree = ET.parse(xml_file)
+            self.root = self.tree.getroot()
+        except ET.ParseError:
+            raise Exception('Erro ao tentar parsear o arquivo XML')
 
     def extrair_pontos_from_polygon(self, polygon_tag):
         points_str = polygon_tag.attrib['points']
@@ -47,8 +56,11 @@ class ConvertToBB:
     def salvar_novo_xml(self, output_file):
         self.tree.write(output_file)
 
-# Exemplo de uso da classe
-caminho_arquivo_xml = 'annotations.xml'
-converter = ConvertToBB(caminho_arquivo_xml)
-converter.converter_e_substituir()
-converter.salvar_novo_xml(caminho_arquivo_xml.replace('.xml', '_bbox.xml'))
+if __name__ == '__main__':
+    args = argparse.ArgumentParser()
+    args.add_argument('--xml_file', type=str, required=True, help='Caminho para o arquivo XML')
+    args = args.parse_args()
+
+    convert = ConvertToBB(args.xml_file)
+    convert.converter_e_substituir()
+    convert.salvar_novo_xml(args.xml_file.replace('.xml', '_bbox.xml'))

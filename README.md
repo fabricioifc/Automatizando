@@ -28,22 +28,54 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Executando o script
+### Removendo imagens com determinada cor
 
-```python
-python main.py --label_dir='/home/fabricio/images/pinus/slices/'
+Este script foi desenvolvido para remover slices de imagens tif que possuem uma quantidade de pixels pretos acima de um determinado percentual. O script foi desenvolvido para ser executado via linha de comando e possui 4 argumentos:
+
+- `--percent`: Percentual de pixels pretos que uma slice deve ter para ser removida
+- `--label_dir`: Diretório com as imagens tif
+- `--color`: Cor do pixel que será considerado preto
+- `--op`: Tipo de ação a ser realizada, podendo ser `move` ou `delete`
+
+## Como executar
+
+Para executar o script, basta rodar o comando abaixo:
+
+```bash
+python main.py --label_dir='lib/samples/' --percent=0.5 --color='(0, 0, 0)' --op='move'
 ```
 
-## Parâmetros
+O comando acima irá mover ou remover todas as imagens que possuem pelo menos 50% de pixels pretos.
 
-- `--label_dir`: Diretório com as imagens TIFF RGB
-- `--color`: Cor do pixel que será considerado para copiar ou não a imagem. Padrão: (0, 0, 0)
+### Extraindo frames de um vídeo
 
-## Resultado
+Este script foi desenvolvido para extrair frames de um vídeo e salvar em um diretório. O script foi desenvolvido para ser executado via linha de comando e possui 2 argumentos:
 
-As imagens que possuem menos que 50% de pixels pretos serão excluidas e as demais serão ignoradas.
+- `--video_path`: Caminho do vídeo
+- `--output_dir`: Diretório de saída
 
-## Observações
+## Como executar
 
-- 💡 O script foi testado apenas com imagens TIFF RGB.
-- ⚠️  As imagens serão excluidas permanentemente.
+Para executar o script, basta rodar o comando abaixo:
+
+```bash
+python lib/extract_frames_from_video.py --video_path='lib/samples/video.mp4'
+```
+
+O comando acima irá extrair os frames do vídeo e salvar no diretório `lib/samples/frames`.
+
+### Convertendo anotações de polígono para Boundig Box (CVAT)
+
+Este script foi desenvolvido para converter anotações de polígono para anotações de bounding box. O script foi desenvolvido para ser executado via linha de comando e possui 2 argumentos:
+
+- `--xml_file`: Caminho do arquivo xml
+
+## Como executar
+
+Para executar o script, basta rodar o comando abaixo:
+
+```bash
+python lib/polygon_to_bb.py --xml_file='lib/annotations/annotations.xml'
+```
+
+O comando acima irá converter as anotações de polígono para anotações de bounding box.

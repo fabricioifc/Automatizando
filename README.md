@@ -1,6 +1,6 @@
-# Rotina para Excluir Imagens
+# Automatizando
 
-Este é uma simples rotina para percorrer uma pasta com imagens TIFF RGB e remover as imagens que possuem pelo menos 50% de pixels pretos.
+Este repositório contém scripts que automatizam tarefas comuns no dia a dia de um programador de visão computacional.
 
 ## Como usar
 

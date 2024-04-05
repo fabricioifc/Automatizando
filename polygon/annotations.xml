@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations>
+  <version>1.1</version>
+  <meta>
+    <task>
+      <id>29</id>
+      <name>Tarefa 01</name>
+      <size>10</size>
+      <mode>annotation</mode>
+      <overlap>0</overlap>
+      <bugtracker></bugtracker>
+      <created>2024-04-05 19:56:33.229449+00:00</created>
+      <updated>2024-04-05 19:56:34.107326+00:00</updated>
+      <subset>default</subset>
+      <start_frame>0</start_frame>
+      <stop_frame>9</stop_frame>
+      <frame_filter></frame_filter>
+      <segments>
+        <segment>
+          <id>34</id>
+          <start>0</start>
+          <stop>9</stop>
+          <url>http://cacaufotografias.ddns.net:8090/api/jobs/33</url>
+        </segment>
+      </segments>
+      <owner>
+        <username>django</username>
+        <email>fabricio.bizotto@gmail.com</email>
+      </owner>
+      <assignee></assignee>
+      <labels>
+        <label>
+          <name>Pinus</name>
+          <color>#33ddff</color>
+          <type>any</type>
+          <attributes>
+          </attributes>
+        </label>
+        <label>
+          <name>Araucária</name>
+          <color>#fafa37</color>
+          <type>any</type>
+          <attributes>
+          </attributes>
+        </label>
+        <label>
+          <name>Eucalipto</name>
+          <color>#f078f0</color>
+          <type>any</type>
+          <attributes>
+          </attributes>
+        </label>
+      </labels>
+    </task>
+    <dumped>2024-04-05 20:12:03.508970+00:00</dumped>
+  </meta>
+  <image id="0" name="DJI_0363_0006.png" width="3840" height="2160">
+  </image>
+  <image id="1" name="DJI_0363_0043.png" width="3840" height="2160">
+  </image>
+  <image id="2" name="DJI_0363_0070.png" width="3840" height="2160">
+  </image>
+  <image id="3" name="DJI_0363_0092.png" width="3840" height="2160">
+  </image>
+  <image id="4" name="DJI_0363_0105.png" width="3840" height="2160">
+  </image>
+  <image id="5" name="DJI_0363_0139.png" width="3840" height="2160">
+  </image>
+  <image id="6" name="DJI_0363_0150.png" width="3840" height="2160">
+  </image>
+  <image id="7" name="DJI_0363_0181.png" width="3840" height="2160">
+  </image>
+  <image id="8" name="DJI_0363_0196.png" width="3840" height="2160">
+  </image>
+  <image id="9" name="DJI_0363_0207.png" width="3840" height="2160">
+  </image>
+</annotations>
